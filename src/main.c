@@ -73,24 +73,12 @@ int main ( void )
 
         adc_val = ADC_ResultGet(ADC_RESULT_BUFFER_0);
         OCMP3_CompareSecondaryValueSet(adc_val<<6);
-
-        
 #ifdef UART_TEST
         printf("ADC val:%d\n",adc_val);
 #endif
         
 #ifdef SPI_TEST
-        
-        RX_count = SPI1_ReadCountGet();
-        printf("SPI reseive count:%d\n",RX_count);
-        if(RX_count >= 1){
-            GPIO_PinWrite(LED2_PIN, 1);
-            
-            SPI1_Read(&RX_spi,1);
-            printf("SPI reseive data:%d\n",RX_spi);
-        }else{
-            printf("no data from SPI\n");
-        }
+
 #endif
         GPIO_PinWrite(LED2_PIN, 0);
         __delay_ms(200);
